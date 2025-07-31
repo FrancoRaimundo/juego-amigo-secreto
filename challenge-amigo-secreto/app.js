@@ -1,30 +1,40 @@
-// El principal objetivo de este desafío es fortalecer tus habilidades en lógica de programación. Aquí deberás desarrollar la lógica para resolver el problema.
-
 let arrayAmigos = [];
 let amigo = "";
 let agregarALista = document.getElementById("listaAmigos");
 let resultado = document.getElementById("resultado");
-let tamañoArray = 0;
-let random = 0;
 
 function agregarAmigo() {
+
+    // Paso el valor del input a la variable amigo
     amigo = document.getElementById("amigo").value;
     if(amigo != "") {
+
+        // Si hay contenido en el input, agrega el elemento al final del array y lo muestra en pantalla
         arrayAmigos.push(amigo);
         console.log(arrayAmigos);
         agregarALista.insertAdjacentHTML("beforeend", `<li>${amigo}</li>`);
-        tamañoArray++;
-        console.log(tamañoArray);
+        document.getElementById("amigo").value = "";
     } else {
+
+        // Si no hay contenido muestra alerta
         alert("Por favor, ingrese un nombre.")
     }
-
-    random = Math.floor((Math.random * tamañoArray));
-    console.log(random);
+  
 }
 
 function sortearAmigo() {
+
+    // Verificacion si hay elementos en la lista
+    if (arrayAmigos.length === 0) {
+        alert("No hay amigos para sortear.");
+        return;
+    }
+
+    // Generando numero aleatorio para sortear
+    let random = Math.floor(Math.random() * arrayAmigos.length);
+    console.log(random);
+
+    // Envio del resultado a pantalla
+    resultado.innerHTML = (`<li>${arrayAmigos[random]}</li>`);
     
-    // resultado.innerHTML = arrayAmigos[arrayAmigos.length];
-    // alert(resultado);
 }
